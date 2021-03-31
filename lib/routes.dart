@@ -15,11 +15,11 @@ class RouteGenerator {
       case homePage:
 // .5
         return MaterialPageRoute(
-          builder: (_) => const HomePage(),
+          builder: (_) => HomePage(),
         );
       case randomPage:
         return MaterialPageRoute(
-          builder: (_) => const RandomPage(),
+          builder: (_) => RandomPage(),
         );
       default:
         throw FormatException("Route not found");
