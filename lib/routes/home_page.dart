@@ -10,48 +10,64 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: WillPopScope(
+        onWillPop: () async => showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+                    title: Text('Are you sure you want to quit?'),
+                    actions: <Widget>[
+                      RaisedButton(
+                          child: Text('sign out'),
+                          onPressed: () => Navigator.of(context).pop(true)),
+                      RaisedButton(
+                          child: Text('cancel'),
+                          onPressed: () => Navigator.of(context).pop(false)),
+                    ])),
+        child: Container(
+          child: Center(
 // ignore: deprecated_member_use
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // ignore: deprecated_member_use
-            RaisedButton(
-              onPressed: () {
-                Navigator.of(context)?.pushNamed(RouteGenerator.randomPage);
-              },
-              child: const Text("for Random Navigation"),
-            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // ignore: deprecated_member_use
+                RaisedButton(
+                  onPressed: () {
+                    Navigator.of(context)?.pushNamed(RouteGenerator.randomPage);
+                  },
+                  child: const Text("for Random Navigation"),
+                ),
 
-            // ignore: deprecated_member_use
-            RaisedButton(
-              onPressed: () {
-                _insert();
-              },
-              child: const Text("Create Table"),
+                // ignore: deprecated_member_use
+                RaisedButton(
+                  onPressed: () {
+                    _insert();
+                  },
+                  child: const Text("Create Table"),
+                ),
+                // ignore: deprecated_member_use
+                RaisedButton(
+                  onPressed: () {
+                    _query();
+                  },
+                  child: const Text("query"),
+                ),
+                // ignore: deprecated_member_use
+                RaisedButton(
+                  onPressed: () {
+                    _update();
+                  },
+                  child: const Text("update"),
+                ),
+                // ignore: deprecated_member_use
+                RaisedButton(
+                  onPressed: () {
+                    _delete();
+                  },
+                  child: const Text("delete"),
+                ),
+              ],
             ),
-            // ignore: deprecated_member_use
-            RaisedButton(
-              onPressed: () {
-                _query();
-              },
-              child: const Text("query"),
-            ),
-            // ignore: deprecated_member_use
-            RaisedButton(
-              onPressed: () {
-                _update();
-              },
-              child: const Text("update"),
-            ),
-            // ignore: deprecated_member_use
-            RaisedButton(
-              onPressed: () {
-                _delete();
-              },
-              child: const Text("delete"),
-            ),
-          ],
+          ),
         ),
       ),
     );
