@@ -12,31 +12,26 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: WillPopScope(
         onWillPop: () async => showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-                    title: Text('Are you sure you want to quit?'),
-                    actions: <Widget>[
-                      RaisedButton(
-                          child: Text('sign out'),
-                          onPressed: () => Navigator.of(context).pop(true)),
-                      RaisedButton(
-                          child: Text('cancel'),
-                          onPressed: () => Navigator.of(context).pop(false)),
-                    ])),
+          context: context,
+          builder: (context) => AlertDialog(
+              title: Text('Are you sure you want to quit?'),
+              actions: <Widget>[
+                // ignore: deprecated_member_use
+                RaisedButton(
+                    child: Text('sign out'),
+                    onPressed: () => Navigator.of(context).pop(true)),
+                // ignore: deprecated_member_use
+                RaisedButton(
+                    child: Text('cancel'),
+                    onPressed: () => Navigator.of(context).pop(false)),
+              ]),
+        ),
         child: Container(
           child: Center(
 // ignore: deprecated_member_use
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // ignore: deprecated_member_use
-                RaisedButton(
-                  onPressed: () {
-                    Navigator.of(context)?.pushNamed(RouteGenerator.randomPage);
-                  },
-                  child: const Text("for Random Navigation"),
-                ),
-
                 // ignore: deprecated_member_use
                 RaisedButton(
                   onPressed: () {
